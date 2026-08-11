@@ -10,6 +10,10 @@
     --header-bg: rgba(10,10,10,0.95);
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body.mode-terang {
     --bg: #f5f5f5;
     --text: #111111;
@@ -353,12 +357,11 @@ footer {
     border: 1px solid var(--border);
     color: var(--text);
     font-size: 14px;
-    padding: 8px 12px;
+    padding: 8px 16px 8px 24px;
     border-radius: 6px;
     cursor: pointer;
     transition: border-color 0.2s;
     margin-left: 24px;
-    padding-left: 24px;
     border-left: 1px solid var(--border);
 }
 
@@ -374,4 +377,163 @@ footer {
 
 #rotating-text.fade-out {
     opacity: 0;
+}
+
+/* =========================
+   GLOBAL CODE BACKGROUND
+   ========================= */
+
+.code-side {
+    position: fixed;
+    top: 100px;
+    bottom: 30px;
+    width: 230px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+    font-family: monospace;
+    font-size: 13px;
+    line-height: 1.5;
+
+    color: var(--accent);
+    opacity: 0.12;
+
+    pointer-events: none;
+    user-select: none;
+
+    z-index: 0;
+}
+
+.code-side span {
+    white-space: nowrap;
+}
+
+/* Kiri */
+.code-left {
+    left: 20px;
+}
+
+/* Kanan */
+.code-right {
+    right: 20px;
+    text-align: right;
+}
+
+/* Animasi kecil: bukan bergerak,
+   tapi opacity + glow berubah */
+.code-side span {
+    animation: codeGlow 4s ease-in-out infinite;
+}
+
+/* Biar tiap baris tidak menyala bersamaan */
+.code-side span:nth-child(2) {
+    animation-delay: 0.5s;
+}
+
+.code-side span:nth-child(3) {
+    animation-delay: 1s;
+}
+
+.code-side span:nth-child(4) {
+    animation-delay: 1.5s;
+}
+
+.code-side span:nth-child(5) {
+    animation-delay: 2s;
+}
+
+.code-side span:nth-child(6) {
+    animation-delay: 2.5s;
+}
+
+.code-side span:nth-child(7) {
+    animation-delay: 3s;
+}
+
+.code-side span:nth-child(8) {
+    animation-delay: 3.5s;
+}
+
+@keyframes codeGlow {
+    0%, 100% {
+        opacity: 0.35;
+    }
+
+    50% {
+        opacity: 1;
+        text-shadow: 0 0 8px var(--accent);
+    }
+}
+
+
+/* =========================
+   RESPONSIVE
+   ========================= */
+
+@media (max-width: 1200px) {
+    .code-side {
+        width: 150px;
+        font-size: 10px;
+    }
+
+    .code-left {
+        left: 5px;
+    }
+
+    .code-right {
+        right: 5px;
+    }
+}
+
+@media (max-width: 900px) {
+    .code-side {
+        display: none;
+    }
+}
+
+.code-bg {
+    position: fixed;
+    top: 100px;
+    bottom: 30px;
+    width: 220px;
+    overflow: hidden;
+
+    font-family: monospace;
+    font-size: 14px;
+    line-height: 2;
+
+    color: var(--accent);
+    opacity: 0.22;
+
+    pointer-events: none;
+    user-select: none;
+    z-index: 0;
+}
+
+.code-left {
+    left: 10px;
+}
+
+.code-track {
+    display: flex;
+    flex-direction: column;
+    animation: infiniteCode 8s linear infinite;
+}
+
+.code-track span {
+    display: block;
+    white-space: nowrap;
+    height: 28px;
+}
+
+@keyframes infiniteCode {
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(-336px);
+    }
 }

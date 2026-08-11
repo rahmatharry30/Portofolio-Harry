@@ -7,20 +7,20 @@ const revealElement = document.querySelectorAll('.reveal');
 
 if (localStorage.getItem('theme') === 'terang') {
     body.classList.add('mode-terang');
-    toggleBtn.textContent = 'Terang';
+    toggleBtn.setItem ='☀️ Terang';
 } else {
-    toggleBtn.textContent = 'Gelap';
+    toggleBtn.setItem = '🌙 Gelap';
 };
 
 toggleBtn.addEventListener('click', () => {
     body.classList.toggle('mode-terang');
 
     if (body.classList.contains('mode-terang')){
-        toggleBtn.textContent = 'Terang';
+        toggleBtn.textContent = '☀️ Terang';
         localStorage.setItem('theme', 'terang');
     } else {
-        toggleBtn.textContent = 'Gelap';
-        localStorage.textContent('theme', 'gelap');
+        toggleBtn.textContent = '🌙 Gelap';
+        localStorage.setItem('theme', 'gelap');
     }
 });
 
